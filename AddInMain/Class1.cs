@@ -12,7 +12,7 @@ using System.Text;
 
 namespace AddInMain
 {
-    public class Class1
+    public class EntryPoint
     {
         private const string introStr = "Hello, I am a RobotStudio Add-In!";
 
