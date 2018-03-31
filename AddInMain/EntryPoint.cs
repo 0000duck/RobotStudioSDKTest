@@ -13,11 +13,7 @@ namespace AddInMain
         // This is the entry point which will be called when the Add-in is loaded
         public static void AddinMain()
         {
-            // Create the view object
-            AddInMainView view = new AddInMainView();
-
-            // Draw the UI
-            view.DrawAddIn();
+            
         }
     }
 }

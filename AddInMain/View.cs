@@ -20,27 +20,24 @@ namespace AddInMain
         private RibbonTab mRibTab;
 
         /// <summary>
-        /// List to hold all of our buttons.
-        /// MAY NOT NEED THIS HERE
-        /// </summary>
-        //private List<CommandBarButton> mButnList;
-
-
-        private const string introStr = "Hello, I am a RobotStudio Add-In!";
-
-
-        /// <summary>
         /// Default Constructor
         /// </summary>
         public AddInMainView()
         {
-            mRibTab = new RibbonTab("test","test");
+            mRibTab = new RibbonTab("test", "test");
         }
 
         /// <summary>
         /// Responsible for drawing the components of the view
         /// </summary>
         public void DrawAddIn()
+        {
+        }
+
+        /// <summary>
+        /// Creates the UI elements
+        /// </summary>
+        public void InitializeUI()
         {
             // Begin UndoStep
             Project.UndoContext.BeginUndoStep("Add Buttons");
@@ -84,9 +81,9 @@ namespace AddInMain
                 ribbonTab.Groups.Add(ribbonGroup);
 
                 // Add an event handler
-                buttonFirst.UpdateCommandUI += new UpdateCommandUIEventHandler(button_UpdateCommandUI);
+                buttonFirst.UpdateCommandUI += new UpdateCommandUIEventHandler(EventManager.Instance.button_UpdateCommandUI);
                 // Add an event handler for pressing the button
-                buttonFirst.ExecuteCommand += new ExecuteCommandEventHandler(button_ExecuteCommand);
+                buttonFirst.ExecuteCommand += new ExecuteCommandEventHandler(EventManager.Instance.button_ExecuteCommand);
             }
             catch (Exception ex)
             {
@@ -97,29 +94,6 @@ namespace AddInMain
             {
                 Project.UndoContext.EndUndoStep();
             }
-        }
-
-
-        /// <summary>
-        /// Event handler for a button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button_ExecuteCommand(object sender, ExecuteCommandEventArgs e)
-        {
-            //Perform any action like creating paths and targets
-            Logger.AddMessage(new LogMessage(introStr));
-        }
-
-        /// <summary>
-        /// Event handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button_UpdateCommandUI(object sender, UpdateCommandUIEventArgs e)
-        {
-            // This enables the button, instead of "button1.Enabled = true".
-            e.Enabled = true;
         }
 
     }
