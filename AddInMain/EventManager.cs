@@ -21,6 +21,7 @@ namespace AddInMain
         private const string mIntroStr = "Hello, I am a RobotStudio Add-In!";
 
 
+
         /** -------------------------------------------------------------- **/
         /// <summary>
         /// Lambda expression which passes a delegate to the contructor which
